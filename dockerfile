@@ -1,20 +1,16 @@
-FROM node:10
+FROM node:12
 
-# Create app directory
-WORKDIR /usr/src/app
+#Specify a working directory
+WORKDIR /usr/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+#Copy the dependencies file
+COPY ./package.json ./
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+#Install dependencies
+RUN npm install 
 
-# Bundle app source
-COPY . .
+#Copy remaining files
+COPY ./ ./
 
 EXPOSE 3000
-CMD ["sh", "-c", "./node_modules/knex/bin/cli.js migrate:latest --knexfile $PWD/knex/config/knex.js && npm run-script production"]
-# CMD [ "node", "server.js" ]
+CMD [ "node", "server.js" ]

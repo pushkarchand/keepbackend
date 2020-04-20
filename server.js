@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const _ = require('lodash');
 const cors = require('cors');
-const Configuration=require('./config/development');
+const Configuration=require('./src/config/development');
 
 
 // Unhandled Rejections and Exceptions process wide
